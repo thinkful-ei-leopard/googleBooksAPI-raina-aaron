@@ -37,7 +37,7 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        console.log('Good response From Google Books API: ', data)
+        console.log('Good response: ', url)
 
 
         this.setState({
