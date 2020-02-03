@@ -12,7 +12,7 @@ function Book(props) {
     return (
         <div className='book'>
             <li className='book-list'>
-                <img src= { imgURL } className='book-imgURL'></img>
+                <img src= { imgURL } className='book-imgURL' alt={`${title }`}></img>
                 <div className= 'book-details'>
                     <h2 className='book-title'> { title} </h2>
                     <p className='book-author'> { author } </p>
