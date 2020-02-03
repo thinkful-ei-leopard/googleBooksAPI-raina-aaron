@@ -2,7 +2,7 @@ import React from 'react';
 
 class Search extends React.Component {
     state = {
-     printType: '',
+     printType: 'all',
      searchTerm: ''  
     }
 
@@ -24,7 +24,7 @@ class Search extends React.Component {
                 <form onSubmit={e => this.props.handleSubmit(e, {printType:this.state.printType, q:this.state.searchTerm})}>
                     <label>Search</label>
                     <input type='text' name='q' className='search-bar' placeholder='Search a book' onChange={ this.handleSearchInput } />
-                    <button type='submit'>Search for Books!</button>
+                    <button type='submit'>Search!</button>
                     <div className='filter-bar'>
                     <label>Print Type</label>   
                     <select name='printType' onChange={ this.handleFilterInput }>

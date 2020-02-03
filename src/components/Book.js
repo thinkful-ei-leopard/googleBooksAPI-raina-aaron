@@ -13,7 +13,7 @@ function Book(props) {
                 {image}
                 <div className= 'book-details'>
                     <h2 className='book-title'> {props.book.volumeInfo.title} </h2>
-                    <p className='book-author'> {props.book.volumeInfo.author } </p>
+                    <p className='book-author'> {props.book.volumeInfo.authors} </p>
                     <p className='book-description'> {props.book.volumeInfo.description} </p>
                 </div>
             </li>
