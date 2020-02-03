@@ -2,10 +2,10 @@ import React from 'react'
 import Book from './Book'
 
 function BookList(props) {
-    const books = props.books.map((book, index) => 
+    const books = props.books.map((book) => 
         <Book 
             book={book} 
-            key={index} />)
+             />)
 
     return (
         <div className='book-list'>

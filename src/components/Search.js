@@ -1,11 +1,15 @@
 import React from 'react';
 
 class Search extends React.Component {
+    state = {
+     printType: '',
+     searchTerm: ''  
+    }
     render () {
 
     return (
         <div>
-            <form onSubmit={this.props.handleSearch}>
+            <form onSubmit={e => this.props.handleSubmit(e, {printType:this.state.printType, q:this.state.searchTerm})}>
                 <label>Search</label>
                 <input type='text' name='q' className='search-bar' placeholder='Search a book' />
                 <button type='submit'>Search for Books!</button>

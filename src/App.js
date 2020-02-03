@@ -8,10 +8,15 @@ class App extends Component {
   
   state = {
     books: [],
+    params: {
     printFilter: '',
-    q: ''
+    q: ''}
   }
 
+  formatQueryParams(params) {
+    const queryItems = Object.keys(params).map(key => `${encodeURI(key +'='+ params[key])}`);
+    return queryItems.join('&');
+  }
 
   handleSubmit = ( event, searchInput ) => {
     event.preventDefault();
@@ -19,9 +24,9 @@ class App extends Component {
     this.setState({
       q: searchInput
     });
-    const baseUrl = 'https://www.googleapis.com/books/v1/volumes'
-    const key = 'AIzaSyDVrJeQ2nTuO5MM9DDITJun2b5ZpjP26aI';
-    const url = this.queryURL(baseUrl, searchInput, key);
+    const baseUrl = 'https://www.googleapis.com/books/v1/volumes';
+    const queryString = this.formatQueryParams(searchInput);
+    const url = baseUrl + '?' + queryString;
     
 
     fetch(url)
@@ -33,8 +38,10 @@ class App extends Component {
       })
       .then(data => {
         console.log('Good response From Google Books API: ', data)
+
+
         this.setState({
-          books: data,
+          books: data.items,
           error: null
         });
       })
@@ -51,7 +58,7 @@ c
       <div className='App'>
         <Header />
 
-        <Search />
+        <Search handleSubmit ={this.handleSubmit}/>
 
         <BookList books={this.state.books}/>
       </div>
